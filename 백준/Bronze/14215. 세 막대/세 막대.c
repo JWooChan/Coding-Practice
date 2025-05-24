@@ -1,39 +1,27 @@
-#include <stdio.h>
-#define length 3
-
 int main()
 {
-    int a[length];
-    int sum = 0;
+	int a, b, c;
+	
+	scanf("%d %d %d", &a, &b, &c);
+	// a, b, c 의 큰 숫자를 구분하고 정렬하기
+	int max = a;
+	if (b > max)
+		max = b;
+	if (c > max)
+		max = c;
 
-    scanf("%d %d %d", &a[0], &a[1], &a[2]);
+	// 최대 변의 길이 제외한 합
+	int sum = a + b + c - max;
 
-    arr_sort(a, length);
-
-    sum = a[1] + a[2];
-
-    while (1) {
-        if (a[0] < sum) {
-            sum += a[0];
-            break;
-        }
-        else a[0] -= 1;
-    }
-
-    printf("%d", sum);
-
-    return 0;
-}
-
-void arr_sort(int arr[], int n)         //내림차순 정렬
-{
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < i; j++) {
-            if (arr[i] > arr[j]) {
-                arr[i] ^= arr[j];
-                arr[j] ^= arr[i];
-                arr[i] ^= arr[j];
-            }
-        }
-    }
+	if (max < sum)
+	{
+		printf("%d\n", a + b + c);
+	}
+	else
+	{
+		int max_length = sum - 1;
+		int re_sum = sum + max_length;
+		printf("%d\n", re_sum);
+	}
+	return 0;
 }
